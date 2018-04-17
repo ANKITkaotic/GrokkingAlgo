@@ -1,18 +1,12 @@
-def findSmallest(arr):
-	smallest = arr[0]
-	smallest_index = 0
-	for i in range(1, len(arr)):
-		if(arr[i] < smallest):
-			smallest = arr[i]
-			smallest_index = i
-	return smallest_index
+arr = [64, 25, 12, 22, 11]
+for i in range(len(arr)):
+	min_indx = i
+	for j in range(i+1, len(arr)):
+		if(arr[min_indx] > arr[j]):
+			min_indx = j
+	arr[i], arr[min_indx] = arr[min_indx], arr[i]
+	
+print ("Sorted array")
+for i in range(len(arr)):
+    print("%d" %arr[i]),
 
-def selectionSort(arr):
-	newArr = []
-	for i in range(len(arr)):
-		smallest = findSmallest(arr)
-		newArr.append(arr.pop(smallest))
-	return newArr
-
-a = [5, 3, 6, 2, 10]
-print selectionSort(a)
